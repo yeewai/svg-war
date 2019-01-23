@@ -12,28 +12,38 @@ const cardRankName = {
   11: "Jack",
   12: "Queen",
   13: "King"
-}
+};
 
-const Card = ({ card, ...props }) => (
-  <g {...props}>
-    <rect
-      className="cardOutline"
+const Card = ({ card, ...props }) =>
+  !card ? (
+    <rect {...props}
       x="-60"
       y="-90"
       width="120"
       height="180"
-      stroke="#006791"
-      fill="transparent"
+      stroke="black"
+      fill="url(#my-cool-gradient) #447799"
     />
-    <use
-      href={`card_suits.svg#${suitName[card.suit]}`}
-      transform="scale(0.25) translate(-180, -50)"
-      fill={card.suit % 2 == 0 ? "red" : "black"}
-    />
-  <text y="-20" textAnchor="middle" fontSize="24px">
-      {cardRankName[card.value + 1] || card.value + 1}
-    </text>
-  </g>
-);
+  ) : (
+    <g {...props}>
+      <rect
+        className="cardOutline"
+        x="-60"
+        y="-90"
+        width="120"
+        height="180"
+        stroke="#006791"
+        fill="white"
+      />
+      <use
+        href={`card_suits.svg#${suitName[card.suit]}`}
+        transform="scale(0.25) translate(-180, -50)"
+        fill={card.suit % 2 == 0 ? "red" : "black"}
+      />
+      <text y="-20" textAnchor="middle" fontSize="24px">
+        {cardRankName[card.value + 1] || card.value + 1}
+      </text>
+    </g>
+  );
 
 export default Card;
