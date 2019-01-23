@@ -14,11 +14,14 @@ const cardRankName = {
   13: "King"
 };
 
-const Card = ({ card, ...props }) =>
-  !card ? (
-    <rect {...props}
-      x="-60"
-      y="-90"
+
+const Card = ({ card, cardPhysics, ...props }) => {
+  console.log(cardPhysics)
+  return !card ? (
+    <rect
+      {...props}
+      x={-60 + cardPhysics.x}
+      y={-90 + cardPhysics.y}
       width="120"
       height="180"
       stroke="black"
@@ -28,8 +31,8 @@ const Card = ({ card, ...props }) =>
     <g {...props}>
       <rect
         className="cardOutline"
-        x="-60"
-        y="-90"
+        x={-60 + cardPhysics.x}
+        y={-90 + cardPhysics.y}
         width="120"
         height="180"
         stroke="#006791"
@@ -45,5 +48,6 @@ const Card = ({ card, ...props }) =>
       </text>
     </g>
   );
+};
 
 export default Card;

@@ -8,12 +8,13 @@ const playerName = {
   1: "2"
 };
 
-const Player = ({ cards, side, win, numCardsToLose }) => (
+const Player = ({ cards, side, win, numCardsToLose, cardPhysics }) => (
   <g>
     {cards.slice(0, numCardsToLose).map((card, i) => (
       <Card
         card={i % 2 == 0 ? card : null}
         transform={`translate(${300 * side}, ${i * 20})`}
+        cardPhysics={cardPhysics}
       />
     ))}
     {win && (
