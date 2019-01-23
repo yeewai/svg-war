@@ -1,0 +1,8 @@
+.button {
+  fill-opacity: 0.75;
+  cursor: pointer;
+}
+
+.button:hover {
+  fill-opacity: 1;
+}
