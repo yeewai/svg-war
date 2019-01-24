@@ -6,8 +6,6 @@ import Player from "./player";
 
 import "./style.css";
 
-import {usePhysics} from './physics'
-
 const shuffledDeck = _.shuffle(
   _.flatten(_.times(4, suit => _.times(13, value => ({ suit, value }))))
 );
@@ -37,22 +35,6 @@ const War = () => {
     }
   };
 
-  const tableBounds = { x: -640, y: -450, width: 1280, height: 900 };
-  const cardBounds = { x: 0, y: 1, width: 120, height: 180 };
-  const x = usePhysics({
-    start: cardBounds.x,
-    max: tableBounds.width - cardBounds.width,
-    startVelocity: 8
-  });
-  const y = usePhysics({
-    start: cardBounds.y,
-    max: tableBounds.height - cardBounds.height,
-    acceleration: 10,
-    damper: 25
-  });
-
-  const cardPhysics = {...cardBounds, x, y}
-
   return (
     <svg
       width="1280px"
@@ -73,14 +55,12 @@ const War = () => {
         numCardsToLose={numCardsToLose}
         side={-1}
         win={currentP1CardValue > currentP2CardValue && !currentCardHidden}
-        cardPhysics={cardPhysics}
       />
       <Player
         cards={p2Cards}
         numCardsToLose={numCardsToLose}
         side={1}
         win={currentP1CardValue < currentP2CardValue && !currentCardHidden}
-        cardPhysics={cardPhysics}
       />
 
       <rect

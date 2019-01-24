@@ -23,7 +23,7 @@ export const usePhysics = ({
       setX(x);
     };
 
-    interval = setInterval(tick, 100);
+    interval = setInterval(tick, 1);
     return () => clearInterval(interval);
   }, []);
   return renderX;

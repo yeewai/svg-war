@@ -1,20 +1,24 @@
 import React from "react";
 import _ from "lodash";
 
-import Card from "./card";
+import CardWithPhysics from "./cardWithPhysics";
+
+import {usePhysics} from './physics'
 
 const playerName = {
   [-1]: "1",
   1: "2"
 };
 
-const Player = ({ cards, side, win, numCardsToLose, cardPhysics }) => (
+const Player = ({ cards, side, win, numCardsToLose }) => {
+
+return (
   <g>
     {cards.slice(0, numCardsToLose).map((card, i) => (
-      <Card
+      <CardWithPhysics
         card={i % 2 == 0 ? card : null}
-        transform={`translate(${300 * side}, ${i * 20})`}
-        cardPhysics={cardPhysics}
+        xStart={300*side}
+        yStart={1+ i*20}
       />
     ))}
     {win && (
@@ -45,5 +49,5 @@ const Player = ({ cards, side, win, numCardsToLose, cardPhysics }) => (
       Player {playerName[side]} Cards in deck: {cards.length}
     </text>
   </g>
-);
+);}
 export default Player;

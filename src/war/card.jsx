@@ -16,14 +16,10 @@ const cardRankName = {
 
 
 const Card = ({ card, cardPhysics, ...props }) => {
-  console.log(cardPhysics)
+  console.log(cardPhysics, props)
   return !card ? (
     <rect
       {...props}
-      x={-60 + cardPhysics.x}
-      y={-90 + cardPhysics.y}
-      width="120"
-      height="180"
       stroke="black"
       fill="url(#my-cool-gradient) #447799"
     />
@@ -31,8 +27,8 @@ const Card = ({ card, cardPhysics, ...props }) => {
     <g {...props}>
       <rect
         className="cardOutline"
-        x={-60 + cardPhysics.x}
-        y={-90 + cardPhysics.y}
+        x={-60}
+        y={-90}
         width="120"
         height="180"
         stroke="#006791"
